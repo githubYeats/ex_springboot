@@ -1,5 +1,7 @@
 package cn.yeats.controller;
 
+import cn.yeats.pojo.User;
+import cn.yeats.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,9 @@ public class HelloController {
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    private UserService userService;
+
     //----读取yml配置文件中的内容----
     @Value("${baidu.url}")
     private String baiduUrl;
@@ -32,6 +37,12 @@ public class HelloController {
         // 多个yml配置文件的测试
         System.out.println(baiduUrl);
         System.out.println(googleUrl);
+
+        // SpringBoot整合jdbc与事务的测试
+        User user = userService.findById(1);
+        String username = user.getUsername();
+        System.out.println("username:" + username);
+        userService.deleteUser(user);
 
         return "Hello, Spring Boot.";
     }

@@ -1,7 +1,14 @@
-#### SpringBoot整合SpringMVC
+#### SpringBoot整合jdbc与事务管理
 
-（3）添加拦截器 Interceptor
+只要为SpringBoot项目提供jdbc启动器，并做少许的配置，
+SpringBoot就能够帮我们连接jdbc并管理事务了。
+
 实现步骤：
-    * 创建拦截器类
-    * 创建拦截器配置类
-    * 测试
+    1.添加jdbc启动器
+        spring-boot-starter-jdbc
+    2.编写service层测试类UserService
+        SpringBoot下，service层不再用"接口-实现类"的模式了。
+    3.修改controller，调用UserService
+    4.启动项目，进行测试
+
+    事务管理整合到项目中了，但还没法测。
