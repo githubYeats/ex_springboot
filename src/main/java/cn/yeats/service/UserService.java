@@ -1,6 +1,8 @@
 package cn.yeats.service;
 
+import cn.yeats.mapper.UserMapper;
 import cn.yeats.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service // Spring注解，注册Bean
 public class UserService {
+
+    @Autowired
+    private UserMapper userMapper;
 
     public User findById(Integer id) {
         User user = new User();
