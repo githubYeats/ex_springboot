@@ -1,22 +1,31 @@
-#### SpringBoot整合MyBatis
+#### SpringBoot整合“通用Mapper”
 
-SpringBoot官方没有提供Mybatis的启动器，但Mybatis官网自己实现了。
-如果需要在SpringBoot项目中使用mybatis，就要引入mybatis与SpringBoot集成的依赖。
+通用Mapper的作者也为自己的插件编写了SpringBoot的启动器，使用时，需要引入依赖：
     <dependency>
-        <groupId>org.mybatis.spring.boot</groupId>
-        <artifactId>mybatis-spring-boot-starter</artifactId>
-        <version>2.0.1</version>
+        <groupId>tk.mybatis</groupId>
+        <artifactId>mapper-spring-boot-starter</artifactId>
+        <version>2.1.5</version>
     </dependency>
+    一旦引入了通用Mapper的启动器，会覆盖Mybatis官方启动器的功能，因此需要移除Mybatis启动器的依赖。
 
 实现步骤：
-    1.引依赖
-    2.yml配置
-    3.创建Mapper接口
-        cn.yeats.mapper.UserMapper
-    4.Mapper接口添加 @Mapper
-        加了@Mapper注解，SpringBoot才能识别它是一个Mapper
+    1.引入通用Mapper依赖
+    2.编写Mapper接口，并配置
+        启动类Application上的@MapperScan注解修改为通用mapper的。
+        import tk.mybatis.spring.annotation.MapperScan;
+    3.修改pojo类
+        @Table(name = "tb_user")
 
-        但是当编写的Mapper很多时，每一个Mapper上都去加@Mapper注解，是非常不方便的，也不推荐。
+        @Id
+        //开启主键自动回填
+        @KeySql(useGeneratedKeys = true)
+        private Integer id; // ID
+    4.修改UserService类的代码
+        注入Mapper，使用它从数据库获取数据
+    5.修改Controller的代码
+    6.运行项目，测试
 
-        可以不使用@Mapper注解，去启动类Application上添加Mapper包扫描注解(推荐)即可：
-            @MapperScan("cn.yeats.mapper")
+到此，SpringBoot就整合了SSM框架了。
+
+还可以整合很多其他的框架和内容，如：
+    Redis    RabbitMQ    elasticsearch  等等

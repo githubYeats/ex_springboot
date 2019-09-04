@@ -1,11 +1,18 @@
 package cn.yeats.pojo;
 
 import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Table(name = "tb_user")
 @Data // lombok注解，自动提供getter和setter、hashCode、equals、toString等方法
 public class User {
+    @Id
+    //开启主键自动回填
+    @KeySql(useGeneratedKeys = true)
     private Integer id; // ID
 
     private String username; // 用户名

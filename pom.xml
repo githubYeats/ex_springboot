@@ -61,10 +61,21 @@
         </dependency>
 
         <!--mybatis-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.0.1</version>
+        </dependency>-->
+
+
+        <!--通用Mapper
+        一旦引入了通用Mapper的启动器，会覆盖Mybatis官方启动器的功能，
+        因此需要移除Mybatis启动器的依赖
+        -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
         </dependency>
 
     </dependencies>
