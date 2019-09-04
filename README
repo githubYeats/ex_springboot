@@ -1,25 +1,17 @@
-#### “属性注入”的简化--SpringBoot方式注入属性
+#### 更优雅的“属性注入”方式
 
-上一步中属性注入是通过注解 @Value。 @Value 注解只能注入基本类型的数据。
-
-Spring Boot中，提供了一种新的属性注入方式，支持各种java基本数据类型及复杂类型的注入。
-
-这种方式，需要写一个“属性读取类”：加 @ConfigurationProperties 注解，类就成为了SpringBoot的属性读取类。
-
-其实现思路是:
-    建立一个属性读取类，类的属性与需要读取的配置文件中的属性一一对应；
-    将配置文件中的属性读取到类的属性中来；
-    之后，哪里需要使用配置文件中的属性，直接注入属性读取类的Bean对象。
+/*
+如果一段属性只有一个Bean需要使用（比如这里的DataSource对象），
+我们无需将其配置文件中各个属性注入到一个类。
+直接在需要的地方声明即可。
+    将下面JdbcProperties类上的注解写到带@Bean注解标记的方法上去就可以。
+ */
+//@ConfigurationProperties(prefix = "jdbc")
+public class JdbcProperties {
+    // ....
+}
 
 实现步骤：
-    1.创建属性读取类JdbcProperties，读取配置文件中的属性
-        加注解: @ConfigurationProperties(prefix = "jdbc")
-            @ConfigurationProperties    声明当前类为属性读取类，SpringBoot会自动去resources目录下读取propeties文件
-            prefix = "jdbc"     读取属性文件中，前缀为jdbc的值
-
-        如果没有指定数据源配置文件的地址，就需要把jdbc.properties名称改为application.properties，
-        这是Spring Boot默认读取的属性文件名。 不然，SpringBoot读取不到外部配置文件。
-    2.修改jdbc.properties为application.properties
-    3.修改JdbcConfig类
-        将读取到属性设置到DataSource对象中，并将DataSource实例注册到Spring容器
-    4.运行SpringBoot项目，测试
+    1.修改JdbcProperties类
+        去掉所有注解： @ConfigurationProperties(prefix = "jdbc")
+    2.修改JdbcConfig类
