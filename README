@@ -1,17 +1,29 @@
-#### 更优雅的“属性注入”方式
+#### yml配置文件
 
-/*
-如果一段属性只有一个Bean需要使用（比如这里的DataSource对象），
-我们无需将其配置文件中各个属性注入到一个类。
-直接在需要的地方声明即可。
-    将下面JdbcProperties类上的注解写到带@Bean注解标记的方法上去就可以。
- */
-//@ConfigurationProperties(prefix = "jdbc")
-public class JdbcProperties {
-    // ....
-}
+SpringBoot默认:
+    若yal与properties配置文件同时都有，会把两个文件的配置合并
+    如果有重复属性，以properties中的为准。
+
+yml文件 vs properties文件
+    properties文件的格式较简单，但是内容冗余度高；
+    yml是树状层级结构的书写形式，格式要求严格，但内容书写简洁。
+
+单个yml配置文件时：  主配置文件命名为application.yml
+
+多个yml配置文件时：
+    有多个yml配置文件的时，可以以application-**.yml命名
+    需要在主配置文件application.yml中做配置，激活其他yml配置文件。
 
 实现步骤：
-    1.修改JdbcProperties类
-        去掉所有注解： @ConfigurationProperties(prefix = "jdbc")
-    2.修改JdbcConfig类
+    1.将application.properties文件改名为application.yml
+        里面内容也要修改成yml文件格式
+    2.再添加两个yml配置文件，分别命名为
+        application-baidu.yml
+            baidu:
+              url: www.baidu.com
+        application-google.yml
+
+        需要在application.yml中配置激活代码
+    3.修改Controller
+        读取yml配置文件中的内容，打印到控制台观察
+    4.其他任何内容都不用动，启动SpringBoot项目，访问controller进行测试
