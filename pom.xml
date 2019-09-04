@@ -8,5 +8,25 @@
     <artifactId>ex_SpringBoot_2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--配置工程成为Sring Boot父工程-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+    </parent>
+
+    <!--指定JDK版本-->
+    <properties>
+        <java-version>1.8</java-version>
+    </properties>
+
+    <dependencies>
+        <!--web启动器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!--无需指定版本号，父工程已接管依赖版本管理（上面那个<parent>）-->
+        </dependency>
+    </dependencies>
 
 </project>

@@ -1,0 +1,24 @@
+#### 利用Spring Boot搭建一个web工程--入门程序
+
+1.创建maven jar工程
+
+2.配置pom.xml文件
+    配置工程成为Sring Boot父工程
+    指定JDK版本
+    添加web启动器
+
+3.创建SpringBoot启动类
+    一般都命名为Application
+    * 加有 @SpringBootApplication 注解的类才是SpringBoot启动类
+
+4.web层实现：创建controller
+    SpringBoot有一个重要的规则： “默认大于配置”，也有人称它为“约定大于配置”。
+    “默认”，指SpringBoot本身带有很多默认的配置。
+
+    默认配置：（本机）
+        Servlet engine: Tomcat 9.0.19       不同人，可能会有不同
+        http port:  8080                    大家都一样
+        context path: ''                    大家都一样
+
+5.运行启动类的main()方法，即是启动SpringBoot项目
+    浏览器访问项目：http://localhost:8080/hello
