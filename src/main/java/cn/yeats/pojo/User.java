@@ -3,6 +3,7 @@ package cn.yeats.pojo;
 import lombok.Data;
 import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -15,7 +16,9 @@ public class User {
     @KeySql(useGeneratedKeys = true)
     private Integer id; // ID
 
+    //@Column(name = "abc") // 将表中abc字段映射到pojo的username属性
     private String username; // 用户名
+
     private String password; // 密码
     private String name; // 真实姓名
     private Integer age; // 年龄

@@ -78,6 +78,12 @@
             <version>2.1.5</version>
         </dependency>
 
+        <!--SpringBoot的单元测试启动器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

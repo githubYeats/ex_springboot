@@ -1,31 +1,13 @@
-#### SpringBoot整合“通用Mapper”
-
-通用Mapper的作者也为自己的插件编写了SpringBoot的启动器，使用时，需要引入依赖：
-    <dependency>
-        <groupId>tk.mybatis</groupId>
-        <artifactId>mapper-spring-boot-starter</artifactId>
-        <version>2.1.5</version>
-    </dependency>
-    一旦引入了通用Mapper的启动器，会覆盖Mybatis官方启动器的功能，因此需要移除Mybatis启动器的依赖。
+#### SpringBoot整合Junit
 
 实现步骤：
-    1.引入通用Mapper依赖
-    2.编写Mapper接口，并配置
-        启动类Application上的@MapperScan注解修改为通用mapper的。
-        import tk.mybatis.spring.annotation.MapperScan;
-    3.修改pojo类
-        @Table(name = "tb_user")
-
-        @Id
-        //开启主键自动回填
-        @KeySql(useGeneratedKeys = true)
-        private Integer id; // ID
-    4.修改UserService类的代码
-        注入Mapper，使用它从数据库获取数据
-    5.修改Controller的代码
-    6.运行项目，测试
-
-到此，SpringBoot就整合了SSM框架了。
-
-还可以整合很多其他的框架和内容，如：
-    Redis    RabbitMQ    elasticsearch  等等
+    1.引入SpringBoot单元测试启动器
+        <!--SpringBoot的单元测试启动器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+    2.项目测试包中编写测试类
+        SpringBoot的测试要加两个注解：
+            @RunWith(SpringRunner.class) //指定新的运行器，由它来创建IoC容器
+            @SpringBootTest // 指定SpringBoot测试类
