@@ -1,4 +1,4 @@
-package cn.yeats.config;
+package cn.yeats.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

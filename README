@@ -1,34 +1,7 @@
 #### SpringBoot整合SpringMVC
 
-上面的示例，使用的是SpringBoot的默认配置，其实它已经可以使用SpringMVC了，
-但是，我们需要进行自定义配置。
-
-配置哪些东西呢？
-比如：修改默认端口 | 修改日志记录级别 | 添加拦截器，等等。
-
-（1）修改默认端口 & 修改日志记录级别
-    要在配置文件中设置
-
-    # 端口配置  Spring Boot项目默认使用的端口是8080
-    server:
-      port: 80  # 浏览器默认端口是80
-
-    # 日志级别配置  对不同包中的类配置不同级别
-    logging:
-      level:
-        cn.yeats: debug
-        org.springframework: info
-
-（2）静态资源访问
-    SpringBoot默认的静态资源存放路径为：     SpringBoot提供有一个 ResourceProperties 类
-        classpath:/META-INF/resources/
-        classpath:/resources/
-        classpath:/static/
-        classpath:/public
-    只要静态资源放在这些目录中任何一个，SpringMVC都会帮我们处理。
-    通常，都会把静态资源放在 resources/static目录下。
-
-    SpringBoot项目默认是jar工程，它没有webapp目录，静态资源就不能按原先SSM框架下的方式存放。
-
-
 （3）添加拦截器 Interceptor
+实现步骤：
+    * 创建拦截器类
+    * 创建拦截器配置类
+    * 测试
