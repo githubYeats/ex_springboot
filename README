@@ -1,29 +1,19 @@
-#### yml配置文件
+#### lombok插件
+主要作用：
+    1）简化pojo的编写             pojo: Plain Ordinary Java Object
+    2）为Bean对象提供日志功能
 
-SpringBoot默认:
-    若yal与properties配置文件同时都有，会把两个文件的配置合并
-    如果有重复属性，以properties中的为准。
-
-yml文件 vs properties文件
-    properties文件的格式较简单，但是内容冗余度高；
-    yml是树状层级结构的书写形式，格式要求严格，但内容书写简洁。
-
-单个yml配置文件时：  主配置文件命名为application.yml
-
-多个yml配置文件时：
-    有多个yml配置文件的时，可以以application-**.yml命名
-    需要在主配置文件application.yml中做配置，激活其他yml配置文件。
+项目中引入lombok插件后，在Bean上使用下面注解：
+    @Data       自动提供getter和setter、hashCode、equals、toString等方法
+    @Getter     自动提供getter方法
+    @Setter     自动提供setter方法
+    @Slf4j      自动在Bean中提供log变量，其实用的是slf4j的日志功能。
+        简单日志门面（Simple Logging Facade for Java）
 
 实现步骤：
-    1.将application.properties文件改名为application.yml
-        里面内容也要修改成yml文件格式
-    2.再添加两个yml配置文件，分别命名为
-        application-baidu.yml
-            baidu:
-              url: www.baidu.com
-        application-google.yml
-
-        需要在application.yml中配置激活代码
-    3.修改Controller
-        读取yml配置文件中的内容，打印到控制台观察
-    4.其他任何内容都不用动，启动SpringBoot项目，访问controller进行测试
+    1.为项目配置lombok插件
+        1）引入lombok依赖
+        2）IDEA安装lombok插件
+            不安装插件，在IDEA中使用lombok的注解虽然编译能通过，但是源码会报错。所以为了让IDEA更好地辨别lombok注解，才安装插件。
+    2.在springboot_test数据库中创建一张表tb_user
+    3.编写pojo类
