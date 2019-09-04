@@ -27,6 +27,20 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <!--无需指定版本号，父工程已接管依赖版本管理（上面那个<parent>）-->
         </dependency>
+
+        <!--MySQL数据库驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
+
+        <!--Druid连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.6</version>
+        </dependency>
     </dependencies>
 
 </project>

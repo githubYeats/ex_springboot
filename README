@@ -1,24 +1,34 @@
-#### 利用Spring Boot搭建一个web工程--入门程序
+#### 【注解配置】： 加载外部配置文件 + 属性注入 + Bean注册
+    SpringBoot提倡的是【全注解配置】
 
-1.创建maven jar工程
+    xml配置Bean
+        <!--Druid：抽取配置文件-->
+        <!--Spring容器加载外部配置文件-->
+        <context:property-placeholder location="classpath:jdbc.properties"/>
+        <bean class="com.alibaba.druid.pool.DruidDataSource" id="druidDataSource1">
+            <property name="driverClassName" value="${jdbc.driver}"/>
+            <property name="url" value="${jdbc.url}"/>
+            <property name="username" value="${jdbc.username}"/>
+            <property name="password" value="${jdbc.password}"/>
+        </bean>
 
-2.配置pom.xml文件
-    配置工程成为Sring Boot父工程
-    指定JDK版本
-    添加web启动器
+    那么问题来了？  没有xml配置文件的SpringBoot，如何通过注解来向Spring容器中注册Bean对象呢？
+        有四个子问题：
+            1）xml文件，用什么代替？
+            2）外部配置文件，怎么加载？
+            3）<bean>标签，用什么代替？
+            4）<property>标签的功能，谁来代替？
 
-3.创建SpringBoot启动类
-    一般都命名为Application
-    * 加有 @SpringBootApplication 注解的类才是SpringBoot启动类
+    以配置数据库连接池为例！  配置Druid
 
-4.web层实现：创建controller
-    SpringBoot有一个重要的规则： “默认大于配置”，也有人称它为“约定大于配置”。
-    “默认”，指SpringBoot本身带有很多默认的配置。
+    java配置主要靠java类和一些注解，比较常用的注解有：
+        @Configuration      声明一个类作为配置类，代替xml文件
+        @Bean               声明在方法上，将方法的返回值加入Bean容器，代替 <bean> 标签
+        @PropertySource     加载外部属性文件
+        @Value              属性注入
 
-    默认配置：（本机）
-        Servlet engine: Tomcat 9.0.19       不同人，可能会有不同
-        http port:  8080                    大家都一样
-        context path: ''                    大家都一样
-
-5.运行启动类的main()方法，即是启动SpringBoot项目
-    浏览器访问项目：http://localhost:8080/hello
+1.pom.xml中引入依赖
+    数据库驱动   连接池Druid
+2.resources下新建jdbc.properties文件
+3.创建数据源“配置类”--JdbcConfig
+4.修改Controller，进行DataSource注入的测试
