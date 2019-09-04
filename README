@@ -1,34 +1,25 @@
-#### 【注解配置】： 加载外部配置文件 + 属性注入 + Bean注册
-    SpringBoot提倡的是【全注解配置】
+#### “属性注入”的简化--SpringBoot方式注入属性
 
-    xml配置Bean
-        <!--Druid：抽取配置文件-->
-        <!--Spring容器加载外部配置文件-->
-        <context:property-placeholder location="classpath:jdbc.properties"/>
-        <bean class="com.alibaba.druid.pool.DruidDataSource" id="druidDataSource1">
-            <property name="driverClassName" value="${jdbc.driver}"/>
-            <property name="url" value="${jdbc.url}"/>
-            <property name="username" value="${jdbc.username}"/>
-            <property name="password" value="${jdbc.password}"/>
-        </bean>
+上一步中属性注入是通过注解 @Value。 @Value 注解只能注入基本类型的数据。
 
-    那么问题来了？  没有xml配置文件的SpringBoot，如何通过注解来向Spring容器中注册Bean对象呢？
-        有四个子问题：
-            1）xml文件，用什么代替？
-            2）外部配置文件，怎么加载？
-            3）<bean>标签，用什么代替？
-            4）<property>标签的功能，谁来代替？
+Spring Boot中，提供了一种新的属性注入方式，支持各种java基本数据类型及复杂类型的注入。
 
-    以配置数据库连接池为例！  配置Druid
+这种方式，需要写一个“属性读取类”：加 @ConfigurationProperties 注解，类就成为了SpringBoot的属性读取类。
 
-    java配置主要靠java类和一些注解，比较常用的注解有：
-        @Configuration      声明一个类作为配置类，代替xml文件
-        @Bean               声明在方法上，将方法的返回值加入Bean容器，代替 <bean> 标签
-        @PropertySource     加载外部属性文件
-        @Value              属性注入
+其实现思路是:
+    建立一个属性读取类，类的属性与需要读取的配置文件中的属性一一对应；
+    将配置文件中的属性读取到类的属性中来；
+    之后，哪里需要使用配置文件中的属性，直接注入属性读取类的Bean对象。
 
-1.pom.xml中引入依赖
-    数据库驱动   连接池Druid
-2.resources下新建jdbc.properties文件
-3.创建数据源“配置类”--JdbcConfig
-4.修改Controller，进行DataSource注入的测试
+实现步骤：
+    1.创建属性读取类JdbcProperties，读取配置文件中的属性
+        加注解: @ConfigurationProperties(prefix = "jdbc")
+            @ConfigurationProperties    声明当前类为属性读取类，SpringBoot会自动去resources目录下读取propeties文件
+            prefix = "jdbc"     读取属性文件中，前缀为jdbc的值
+
+        如果没有指定数据源配置文件的地址，就需要把jdbc.properties名称改为application.properties，
+        这是Spring Boot默认读取的属性文件名。 不然，SpringBoot读取不到外部配置文件。
+    2.修改jdbc.properties为application.properties
+    3.修改JdbcConfig类
+        将读取到属性设置到DataSource对象中，并将DataSource实例注册到Spring容器
+    4.运行SpringBoot项目，测试
