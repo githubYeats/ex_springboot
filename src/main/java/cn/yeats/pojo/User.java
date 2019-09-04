@@ -6,11 +6,12 @@ import tk.mybatis.mapper.annotation.KeySql;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "tb_user")
 @Data // lombok注解，自动提供getter和setter、hashCode、equals、toString等方法
-public class User {
+public class User implements Serializable {
     @Id
     //开启主键自动回填
     @KeySql(useGeneratedKeys = true)

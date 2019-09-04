@@ -1,13 +1,13 @@
-#### SpringBoot整合Junit
+#### SpringBoot整合Redis
+
+SpringBoot本身整合了Redis，使用时引入SpringBoot的Redis启动器，并在yml文件配置一下即可。
 
 实现步骤：
-    1.引入SpringBoot单元测试启动器
-        <!--SpringBoot的单元测试启动器-->
+    1.引入依赖
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.0.1.RELEASE</version><!--版本号不加会出错-->
         </dependency>
-    2.项目测试包中编写测试类
-        SpringBoot的测试要加两个注解：
-            @RunWith(SpringRunner.class) //指定新的运行器，由它来创建IoC容器
-            @SpringBootTest // 指定SpringBoot测试类
+    2.测试包下创建RedisTest类
+        注入RedisTemplate，测试

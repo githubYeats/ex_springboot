@@ -15,6 +15,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/springboot_test
     username: root
     password: root
+  # Redis配置
+  redis:
+    host: 192.168.178.131 # 虚拟机中配的Redis
+#    host: localhost
+    port: 6379
 
 # 日志级别配置  对不同包中的类配置不同级别
 logging:

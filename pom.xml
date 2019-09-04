@@ -54,7 +54,7 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!--jdbc及事务的启动器-->
+        <!--jdbc启动器，包含“事务管理”-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -78,10 +78,16 @@
             <version>2.1.5</version>
         </dependency>
 
-        <!--SpringBoot的单元测试启动器-->
+        <!--单元测试启动器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.0.1.RELEASE</version><!--版本号不加会出错-->
         </dependency>
 
     </dependencies>
