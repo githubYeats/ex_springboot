@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication // 有该注解标记的才是SpringBoot启动类
 public class Application {
     public static void main(String[] args) {
-        // 第1个参数，必须是SpringBoot类
+        // 第1个参数，必须是SpringBoot启动类
         SpringApplication.run(Application.class, args);
     }
 }

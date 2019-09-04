@@ -9,3 +9,13 @@ jdbc:
 spring:
   profiles:
     active: baidu, google
+
+# 日志级别配置  对不同包中的类配置不同级别
+logging:
+  level:
+    cn.yeats: debug
+    org.springframework: info
+
+# 端口配置  Spring Boot项目默认使用的端口是8080
+server:
+  port: 80  # 浏览器默认端口是80
