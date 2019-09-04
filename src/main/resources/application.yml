@@ -9,12 +9,19 @@ jdbc:
 spring:
   profiles:
     active: baidu, google
+  # ----HikariCP连接池配置----
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springboot_test
+    username: root
+    password: root
 
 # 日志级别配置  对不同包中的类配置不同级别
 logging:
   level:
     cn.yeats: debug
     org.springframework: info
+
 
 # 端口配置  Spring Boot项目默认使用的端口是8080
 server:
