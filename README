@@ -1,13 +1,15 @@
-#### SpringBoot整合Redis
+#### SpringBoot项目部署
 
-SpringBoot本身整合了Redis，使用时引入SpringBoot的Redis启动器，并在yml文件配置一下即可。
-
+目标：将Spring Boot项目打成jar包，并运行jar包，通过浏览器访问进行测试。
 实现步骤：
-    1.引入依赖
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>2.0.1.RELEASE</version><!--版本号不加会出错-->
-        </dependency>
-    2.测试包下创建RedisTest类
-        注入RedisTemplate，测试
+    1. 添加打包组件
+    2. 打包
+        使用maven的package命令
+    2. 部署项目（运行jar工程）
+        > java -jar 全包名
+        > java -jar ex_SpringBoot_2-1.0-SNAPSHOT.jar
+
+        可以将启动命令写到.bat文件中，直接点击运行更方便。
+    3.浏览器访问测试
+        查询用户
+        http://localhost/hello/findUserById/7
