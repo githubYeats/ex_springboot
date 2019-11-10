@@ -5,7 +5,7 @@ server:
 # 数据源配置
 jdbc:
   driverClassName: com.mysql.jdbc.Driver
-  url: jdbc:mysql://127.0.0.1:3306/springboot_test
+  url: jdbc:mysql://139.155.20.189:33069/springboot_test # 腾讯云服务器中Docker部署的MySQL
   username: root
   password: root
 
