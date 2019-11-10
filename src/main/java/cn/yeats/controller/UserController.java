@@ -25,7 +25,7 @@ public class UserController {
      * @param id
      * @return
      */
-    @GetMapping("/{id}") // restful风格
+    @GetMapping("/findUserById/{id}") // restful风格
     public User findUserById(@PathVariable Integer id) {
         // SpringBoot整合通用Mapper的测试
         return userService.findById(id);
