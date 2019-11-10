@@ -33,7 +33,7 @@ public class UserService {
 
     @Transactional
     public void deleteUser(User user) {
-        user = userMapper.selectByPrimaryKey(8);
+        user = userMapper.selectByPrimaryKey(7);
         userMapper.deleteByPrimaryKey(user);
 
         // 模拟出错，查看事务控制的效果: 删除用户的代码虽然执行，但用户数据是不会被删除的

@@ -1,3 +1,7 @@
+# 端口配置  Spring Boot项目默认使用的端口是8080
+server:
+  port: 80  # 浏览器默认端口是80
+
 # 数据源配置
 jdbc:
   driverClassName: com.mysql.jdbc.Driver
@@ -5,8 +9,8 @@ jdbc:
   username: root
   password: root
 
-# 加载并激活其他yml配置文件
 spring:
+  # 加载并激活其他yml配置文件
   profiles:
     active: baidu, google
   # ----HikariCP连接池配置----
@@ -18,7 +22,7 @@ spring:
   # Redis配置
   redis:
     host: 192.168.178.131 # 虚拟机中配的Redis
-#    host: localhost
+    #    host: localhost
     port: 6379
 
 # 日志级别配置  对不同包中的类配置不同级别
@@ -27,15 +31,15 @@ logging:
     cn.yeats: debug
     org.springframework: info
 
-
-# 端口配置  Spring Boot项目默认使用的端口是8080
-server:
-  port: 80  # 浏览器默认端口是80
-
 # mybatis配置
 mybatis:
-  type-aliases-package: cn.yeats.pojo # 实体类所在包的路径
+  # 映射文件路径。   使用mybatis时需要xml配置文件，通用Mapper就不再需要xml文件了
+  #mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.yeats.pojo # 实体类所在包的路径，多个package之间可以用逗号或者分号等来进行分隔
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 控制台输出执行的sql语句
-# 映射文件路径。   使用mybatis时需要xml配置文件，通用Mapper就不再需要xml文件了
-#  mapper-locations: classpath:mapper/*.xml
+    ##############################################################################
+    # 默认为false,开启mybatis驼峰式命名规则转换可以省去xml文件中resultMap编写的麻烦，
+    # 只需要为resultType指定数据库表对应的实体类即可，
+    # 但是考虑程序的安全性以及映射灵活性，通常开发中还是将resultMap结合使用
+    map-underscore-to-camel-case: true
