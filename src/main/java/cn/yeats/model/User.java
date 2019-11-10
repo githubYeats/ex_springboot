@@ -1,9 +1,8 @@
-package cn.yeats.pojo;
+package cn.yeats.model;
 
 import lombok.Data;
 import tk.mybatis.mapper.annotation.KeySql;
 
-import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;

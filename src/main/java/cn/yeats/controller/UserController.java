@@ -1,6 +1,6 @@
 package cn.yeats.controller;
 
-import cn.yeats.pojo.User;
+import cn.yeats.model.User;
 import cn.yeats.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

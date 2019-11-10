@@ -1,6 +1,6 @@
 package cn.yeats.test;
 
-import cn.yeats.pojo.User;
+import cn.yeats.model.User;
 import cn.yeats.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

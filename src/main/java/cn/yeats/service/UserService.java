@@ -1,7 +1,7 @@
 package cn.yeats.service;
 
 import cn.yeats.mapper.UserMapper;
-import cn.yeats.pojo.User;
+import cn.yeats.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Date: 2019/9/4 15:30
  * Desc:
  */
-@Slf4j
+@Slf4j // lombok注解，日志
 @Service // Spring注解，注册Bean
 public class UserService {
 

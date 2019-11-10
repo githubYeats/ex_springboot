@@ -1,6 +1,6 @@
 package cn.yeats.mapper;
 
-import cn.yeats.pojo.User;
+import cn.yeats.model.User;
 import tk.mybatis.mapper.common.Mapper;
 
 /**

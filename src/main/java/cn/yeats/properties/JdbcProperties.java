@@ -1,5 +1,6 @@
 package cn.yeats.properties;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
     将下面JdbcProperties类上的注解写到JdbcConfig类中@Bean注解标记的方法上去就可以。
  */
 //@ConfigurationProperties(prefix = "jdbc")
+@Data
 public class JdbcProperties {
     private String driverClassName;
 
@@ -23,36 +25,4 @@ public class JdbcProperties {
     private String username;
 
     private String password;
-
-    public String getDriverClassName() {
-        return driverClassName;
-    }
-
-    public void setDriverClassName(String driverClassName) {
-        this.driverClassName = driverClassName;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
