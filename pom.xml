@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.yeats</groupId>
-    <artifactId>ex_springboot</artifactId>
+    <artifactId>angel2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!--配置工程成为Sring Boot父工程-->
