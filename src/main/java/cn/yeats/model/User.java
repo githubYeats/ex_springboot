@@ -3,34 +3,48 @@ package cn.yeats.model;
 import lombok.Data;
 import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "tb_user")
-@Data // lombok注解，自动提供getter和setter、hashCode、equals、toString等方法
+/**
+ * @author fyyang
+ */
+@Table(name = "t_user")
+@Data
 public class User implements Serializable {
+    /**
+     * 开启主键自动回填
+     */
     @Id
-    @KeySql(useGeneratedKeys = true)//开启主键自动回填
-    private Integer id; // ID
+    @KeySql(useGeneratedKeys = true)
+    private Integer id;
 
-    //@Column(name = "abc") // 将表中abc字段映射到pojo的username属性
-    private String username; // 用户名
+    @Column(name = "user_name")
+    private String username;
 
-    private String password; // 密码
+    private String password;
 
-    private String name; // 真实姓名
+    private String name;
 
-    private Integer age; // 年龄
+    private Integer age;
 
-    private Integer sex; // 性别：1男，2女
+    /**
+     * 将表中"gender"字段映射到pojo的属性
+     */
+    @Column(name = "gender")
+    private Integer sex;
 
-    private String birthday; // 出生日期
+    private String birthday;
 
-    private String note; // 备注
+    @Column(name = "remark")
+    private String note;
 
-    private Date created; // 创建时间
+    private Date created;
 
-    private Date updated; // 更新时间
+    private Date updated;
+
+    private Integer isDeleted;
 }

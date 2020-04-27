@@ -2,36 +2,28 @@ package cn.yeats.service;
 
 import cn.yeats.mapper.UserMapper;
 import cn.yeats.model.User;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Author: Feiyue
- * Date: 2019/9/4 15:30
- * Desc:
+ * @author Feiyue
+ * @since 2019/9/4 15:30
  */
-@Slf4j // lombok注解，日志
-@Service // Spring注解，注册Bean
-public class UserService {
 
-    /*
-    这个地方会提示自动注入失败。这是编译检查，没检查到UserMapper类型的Bean。
-    其实这是没有错的。
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class UserServiceImpl {
 
-    原因：
-        通用Mapper，是运行时，Spring框架为其生成代理实现类的。
-        此时还没有运行，Spring容器中自然是没有UserMapper类型的Bean对象的。
-     */
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     public User findById(Integer id) {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = RuntimeException.class)
     public void deleteUser(User user) {
         user = userMapper.selectByPrimaryKey(7);
         userMapper.deleteByPrimaryKey(user);

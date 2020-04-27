@@ -1,11 +1,10 @@
 package cn.yeats.properties;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Author: Feiyue
- * Date: 2019/9/4 13:15
+ * @author Feiyue
+ * @date 2019/9/4 13:15
  * Desc: 外部配置文件属性读取类
  */
 

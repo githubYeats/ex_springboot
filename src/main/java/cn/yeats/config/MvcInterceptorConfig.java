@@ -7,8 +7,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Author: Feiyue
- * Date: 2019/9/4 15:16
+ * @author fyyang
+ * @since  2019/9/4 15:16
  * Desc: SpringMVC拦截器的配置类
  */
 @Configuration
@@ -16,7 +16,7 @@ public class MvcInterceptorConfig implements WebMvcConfigurer {
     /**
      * 将拦截器注册到Spring容器
      *
-     * @return
+     * @return 响应
      */
     @Bean
     public MyInterceptor myInterceptor() {
